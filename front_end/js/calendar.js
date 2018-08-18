@@ -31,22 +31,22 @@ calendar.setOptions({week: {startDayOfWeek: 1}}, true); //sets the start of the 
 calendar.setOptions({month: {startDayOfWeek: 1}}, true);
 calendar.changeView(calendar.getViewName(), true);
 
-function readTextFile(file, callback) { //requesting file setup
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
-}
+// function readTextFile(file, callback) { //requesting file setup
+//     var rawFile = new XMLHttpRequest();
+//     rawFile.overrideMimeType("application/json");
+//     rawFile.open("GET", file, true);
+//     rawFile.onreadystatechange = function() {
+//         if (rawFile.readyState === 4 && rawFile.status == "200") {
+//             callback(rawFile.responseText);
+//         }
+//     }
+//     rawFile.send(null);
+// }
 
-readTextFile("http://localhost:8000/js/class_test.json", function(text){ //reading testfile hosted on the server into the calendar
-    var data = JSON.parse(text);
-    calendar.createSchedules(data);
-});
+// readTextFile("http://localhost:8000/js/class_test.json", function(text){ //reading testfile hosted on the server into the calendar
+//     var data = JSON.parse(text);
+//     calendar.createSchedules(data);
+// });
 
 calendar.on('clickDayname', function(event) { //clicking on calendar date allows you to zoom into daliy view and vice versa
     if (calendar.getViewName() === 'week') {
