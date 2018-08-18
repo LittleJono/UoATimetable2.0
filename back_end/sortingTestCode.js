@@ -1,17 +1,20 @@
 var fs = require('fs');
 var rp = require('request-promise')
+
+//pass this an array of courses 
 fs.readFile('test.json', 'utf8', (err, data) => {
-	var clashLog = {}
-	data = JSON.parse(data)
-	data = data["courseID"]
-	console.log(data)
+	var clashLog = {};
+	data = JSON.parse(data);
+	data = data["courseID"];
+	console.log(data);
 	keys = Object.keys(data);
-	console.log(keys)
+	console.log(keys);
 
 	for (index in keys) {
 		clashLog[keys[index]] = "";
 	}
-	//for every timetable
+
+	/*for every timetable
 	for (index in keys) {
 		//get timetable
 		var timetable = data[keys[index]];
@@ -45,33 +48,31 @@ fs.readFile('test.json', 'utf8', (err, data) => {
 			}
 		}
 		console.log(clashLog)
+	}*/
+
+	for (index in coursesArray) {
+		course = coursesArray[index]
+		for (timetable in course["timetables"]) {
+			theTimetable = course["timetables"][timetable];
+			for (slot in theTimetable) {
+				for (index2 in coursesArray) {
+					if (index != index2) {
+						course2 = coursesArray[index2]
+						for (timetable2 in course2["timetables"]) {
+							theTimetable2 = course2["timetables"][timetable2];
+							for (slot2 in theTimetable2) {
+								if (slot["startTime"] == slot2["endTime"]) {
+									console.log("clash")
+								} else {
+									console.log("no clash")
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 });
 
-/* rp("http://35.160.249.111/classes?classNbr=" + classNumber + "&size=500&catalogNbr=" + catalogNbr + "&subject=COMPSCI").then(function(data) {
-	var obj = JSON.parse(data);
-	var whatever = {};
-	obj = obj["data"]
-	console.log("-----------------")
-	console.log(obj)
-	obj = obj[0]["meetingPatterns"];
-	console.log("-----------------")
-	console.log(obj)
-	var i = 0;
-	obj.forEach(element => {
-		for (i = 0; i < obj.length; i++) {
-			if ((whatever["slot" + i].startTime == element.startTime) || (whatever["slot" + i].endTime == element.endTime)) {
-				return;
-			}
-		}
-		whatever["slot" + i] = element;
-		i++;
-	});
-	console.log("-----------------")
-	console.log(this);
-}) 
-
-new TimeTable("46472", "101")
-*/
-	
 //tuicalendar
