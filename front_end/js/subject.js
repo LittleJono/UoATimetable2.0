@@ -1,3 +1,21 @@
+window.onload = function() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var subjectJSON = JSON.parse(this.responseText);
+            for (i in subjectJSON){
+                $('#subject').append($('<option>', {
+                    value: i,
+                    text: i
+                }));
+            }
+
+        }
+    };
+    xhttp.open("GET", "https://api.auckland.ac.nz/service/courses/v2/subjects?effectiveYear=2018", true);
+    xhttp.send(null);
+}
+
 var course_list =
     {
         "111": "An Introduction to Practical Computing",
