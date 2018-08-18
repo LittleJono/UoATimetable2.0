@@ -1,9 +1,9 @@
-window.onload = function() {
+window.onload = function () {
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var subjectJSON = JSON.parse(this.responseText);
-            for (i in subjectJSON){
+            for (i in subjectJSON) {
                 $('#subject').append($('<option>', {
                     value: i,
                     text: i
@@ -86,7 +86,13 @@ calendar.changeView(calendar.getViewName(), true);
 // Make a request for a user with a given ID
 
 $("#submit").click(function () {
+    var div = document.createElement("Div");
+    div.setAttribute('class', 'list-group-item');
     var course = $('#course').val();
+    div.innerHTML += (course + ' ' + course_list[course]);
+    $("#checklist").append(div);
+
+
     axios.get("http://35.160.249.111/classes?year=2018&subject=COMPSCI&catalogNbr=" + course)
         .then(function (response) {
             // handle success
@@ -128,10 +134,10 @@ $("#submit").click(function () {
         })
 });
 
-$("#add-course").click(function () {
-    var div = document.createElement("Div");
-    div.setAttribute('class', 'list-group-item');
-    var a = $('#course').val();
-    div.innerHTML += (course_list[a + ""]);
-    $("#checklist").append(div);
-});
+// $("#add-course").click(function () {
+//     var div = document.createElement("Div");
+//     div.setAttribute('class', 'list-group-item');
+//     var a = $('#course').val();
+//     div.innerHTML += (course_list[a] + "");
+//     $("#checklist").append(div);
+// });
