@@ -1,0 +1,32 @@
+[{
+    "id": "1",
+    "calendarId": "1",
+    "title": "COMPSCI 101",
+    "category": "time",
+    "start": "2018-08-13T03:00:00",
+    "end": "2018-08-13T04:00:00"
+},
+{
+    "id": "2",
+    "calendarId": "1",
+    "title": "COMPSCI 230",
+    "category": "time",
+    "start": "2018-08-14T12:00:00",
+    "end": "2018-08-14T13:00:00"
+},
+{
+    "id": "3",
+    "calendarId": "1",
+    "title": "COMPSCI 225",
+    "category": "time",
+    "start": "2018-08-15T04:00:00",
+    "end": "2018-08-15T05:00:00"
+},
+{
+    "id": "4",
+    "calendarId": "1",
+    "title": "COMPSCI 369",
+    "category": "time",
+    "start": "2018-08-15T05:00:00",
+    "end": "2018-08-15T06:00:00"
+}]
