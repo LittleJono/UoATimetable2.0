@@ -110,6 +110,14 @@ $("#submit").click(function () {
         })
 });
 
+$("#add-course").click(function () {
+    var div = document.createElement("Div");
+    div.setAttribute('class', 'list-group-item');
+    var a = $('#course').val();
+    div.innerHTML += (course_list[a + ""]);
+    $("#checklist").append(div);
+});
+
 
 function newCalendar(sheduleList) {
     var calendar = new tui.Calendar('#calendar', {
