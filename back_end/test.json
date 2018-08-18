@@ -1,0 +1,49 @@
+
+{
+	"courseID": {
+		"timetableOne": {
+			"slot1": {
+				"startTime": "09:00",
+				"endTime": "10:00",
+				"DOW": "tuesday"
+			},
+			"slot2": {
+				"startTime": "08:00",
+				"endTime": "09:00",
+				"DOW": "wednesday"
+			},
+			"slot3": {
+				"startTime": "10:00",
+				"endTime": "11:00",
+				"DOW": "wednesday"
+			},
+			"slot4": {
+				"startTime": "08:00",
+				"endTime": "09:00",
+				"DOW": "friday"
+			}
+		},
+		"timetableTwo": {
+			"slot1": {
+				"startTime": "09:00",
+				"endTime": "10:00",
+				"DOW": "tuesday"
+			},
+			"slot2": {
+				"startTime": "14:00",
+				"endTime": "15:00",
+				"DOW": "wednesday"
+			},
+			"slot3": {
+				"startTime": "15:00",
+				"endTime": "16:00",
+				"DOW": "wednesday"
+			},
+			"slot4": {
+				"startTime": "11:00",
+				"endTime": "12:00",
+				"DOW": "friday"
+			}
+		}
+	}
+}
