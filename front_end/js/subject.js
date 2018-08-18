@@ -99,6 +99,7 @@ $("#submit").click(function () {
             var meetingPatterns = response.data.data[0].meetingPatterns;
             var sheduleList = []
             var i = 0
+            var color = getRandomColor()
             meetingPatterns.forEach(function (items) {
                 //hard code data to last week
                 var dates = {
@@ -110,6 +111,7 @@ $("#submit").click(function () {
                 };
                 var week = dates[items.daysOfWeek];
                 //initial calender list object
+
                 var object = {
                     id: '',
                     calendarId: '1',
@@ -117,7 +119,9 @@ $("#submit").click(function () {
                     category: 'time',
                     dueDateClass: '',
                     start: '',
-                    end: ''
+                    end: '',
+                    color:'#FFF',
+                    bgColor:color
                 }
                 object.id = i
                 object.location = items.location
@@ -127,12 +131,23 @@ $("#submit").click(function () {
                 object.end = new Date(week.getFullYear(), week.getMonth() - 1, week.getDate(), items.endTime.split(":")[0])
                 object.category = 'time'
                 object.isReadOnly = true
+
                 sheduleList.push(object)
                 i++
             })
             calendar.createSchedules(sheduleList)
+            // calendar.setCalendarColor()
         })
 });
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 // $("#add-course").click(function () {
 //     var div = document.createElement("Div");
