@@ -99,7 +99,7 @@ $("#submit").click(function () {
             var meetingPatterns = response.data.data[0].meetingPatterns;
             var sheduleList = []
             var i = 0
-            var color = getRandomColor()
+            var color = getColor(course)
             meetingPatterns.forEach(function (items) {
                 //hard code data to last week
                 var dates = {
@@ -136,18 +136,9 @@ $("#submit").click(function () {
                 i++
             })
             calendar.createSchedules(sheduleList)
-            // calendar.setCalendarColor()
         })
 });
 
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
 // $("#add-course").click(function () {
 //     var div = document.createElement("Div");
@@ -156,3 +147,20 @@ function getRandomColor() {
 //     div.innerHTML += (course_list[a] + "");
 //     $("#checklist").append(div);
 // });
+
+var COLORS = [
+    '#e21400', '#91580f', '#f8a700', '#f78b00',
+    '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
+    '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
+];
+
+var getColor = (username) => {
+    // Compute hash code
+    var hash = 7;
+    for (var i = 0; i < username.length; i++) {
+        hash = username.charCodeAt(i) + (hash << 5) - hash;
+    }
+    // Calculate color
+    var index = Math.abs(hash % COLORS.length);
+    return COLORS[index];
+}
