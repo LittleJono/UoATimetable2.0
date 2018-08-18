@@ -24,6 +24,8 @@ var course_list =
         "373": "Computer Graphics and Image Processing",
         "380": "Undergraduate Project in Computer Science"
     };
+
+    
 //load course list
 $("#subject").change(function () {
     $.each(course_list, function (i, item) {
@@ -112,6 +114,14 @@ $("#submit").click(function () {
             })
             newCalendar(sheduleList)
         })
+});
+
+$("#add-course").click(function () {
+    var div = document.createElement("Div");
+    div.setAttribute('class', 'list-group-item');
+    var a = $('#course').val();
+    div.innerHTML += (course_list[a]);
+    $("#checklist").append(div);
 });
 
 
