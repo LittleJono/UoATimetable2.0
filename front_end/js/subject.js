@@ -1,102 +1,33 @@
-var items = {
-    "data": [
-        {
-            "acadCareer": "UC01",
-            "acadGroup": "4000",
-            "acadOrg": "COMSCI",
-            "associatedClassNbr": "1",
-            "campus": "C",
-            "catalogNbr": " 340",
-            "classNbr": "46302",
-            "classDescr": "Operating Systems",
-            "classStatus": "A",
-            "classType": "E",
-            "classSection": "L01C",
-            "combinedSectionId": " ",
-            "component": "LEC",
-            "consent": "N",
-            "dropConsent": "N",
-            "crseId": "001390",
-            "crseOfferNbr": 1,
-            "startDate": "2018-07-16",
-            "endDate": "2018-11-12",
-            "enrolCap": 320,
-            "enrolTotal": 315,
-            "instructorMode": "P",
-            "meetingPatterns": [
-                {
-                    "startDate": "2018-07-18",
-                    "endDate": "2018-08-22",
-                    "startTime": "11:00:00",
-                    "endTime": "12:00:00",
-                    "location": "201N-346",
-                    "daysOfWeek": "wed",
-                    "meetingNumber": 1
-                },
-                {
-                    "startDate": "2018-09-12",
-                    "endDate": "2018-10-17",
-                    "startTime": "11:00:00",
-                    "endTime": "12:00:00",
-                    "location": "201N-346",
-                    "daysOfWeek": "wed",
-                    "meetingNumber": 2
-                },
-                {
-                    "startDate": "2018-07-19",
-                    "endDate": "2018-08-23",
-                    "startTime": "11:00:00",
-                    "endTime": "12:00:00",
-                    "location": "201N-346",
-                    "daysOfWeek": "thu",
-                    "meetingNumber": 3
-                },
-                {
-                    "startDate": "2018-09-13",
-                    "endDate": "2018-10-18",
-                    "startTime": "11:00:00",
-                    "endTime": "12:00:00",
-                    "location": "201N-346",
-                    "daysOfWeek": "thu",
-                    "meetingNumber": 4
-                },
-                {
-                    "startDate": "2018-07-20",
-                    "endDate": "2018-08-24",
-                    "startTime": "11:00:00",
-                    "endTime": "12:00:00",
-                    "location": "201N-346",
-                    "daysOfWeek": "fri",
-                    "meetingNumber": 5
-                },
-                {
-                    "startDate": "2018-09-14",
-                    "endDate": "2018-10-19",
-                    "startTime": "11:00:00",
-                    "endTime": "12:00:00",
-                    "location": "201N-346",
-                    "daysOfWeek": "fri",
-                    "meetingNumber": 6
-                }
-            ],
-            "session": "1",
-            "visible": true,
-            "status": "O",
-            "subject": "COMPSCI",
-            "term": "1185",
-            "year": 2018
-        }
-    ],
-    "total": 2
-};
+var course_list = [
+    {"key":"111","value":"An Introduction to Practical Computing"},
+    {"key":"101","value":"Principles of Programming"},
+    {"key":"105","value":"Principles of Computer Science"},
+    {"key":"107","value":"Computer Science Fundamentals"},
+    {"key":"210","value":"Computer Systems 1"},
+    {"key":"215","value":"Computer Systems 2"},
+    {"key":"220","value":"Algorithms and Data Structures"},
+    {"key":"225","value":"Discrete Structures in Mathematics and Computer Science"},
+    {"key":"230","value":"Programming Techniques"},
+    {"key":"280","value":"Introduction to Software Development"},
+    {"key":"313","value":"Computer Organisation"},
+    {"key":"314","value":"Modern Data Communications"},
+    {"key":"320","value":"Applied Algorithmics"},
+    {"key":"335","value":"Distributed Objects, Services and Programming"},
+    {"key":"340","value":"Operating Systems"},
+    {"key":"345","value":"Human Computer Interaction"},
+    {"key":"350","value":"Mathematical Foundations of Computer Science"},
+    {"key":"351","value":"Fundamentals of Database Systems"},
+    {"key":"361","value":"Machine Learning"},
+    {"key":"367","value":"Artificial Intelligence"},
+    {"key":"369","value":"Computational Science"},
+    {"key":"373","value":"Computer Graphics and Image Processing"},
+    {"key":"380","value":"Undergraduate Project in Computer Science"}];
 
 $("#subject").change(function () {
-    //TODO send ajax update items
-
-    $.each(items.data, function (i, item) {
+    $.each(course_list, function (i, item) {
         $('#course').append($('<option>', {
-            value: item.classNbr,
-            text: item.classDescr
+            value: item.key,
+            text: item.key + " " + item.value
         }));
     });
 });
