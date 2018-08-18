@@ -106,7 +106,7 @@ $("#submit").click(function () {
                 sheduleList.push(object)
                 i++
             })
-            newCalendar(sheduleList)
+            calendar.createSchedules(sheduleList)
         })
 });
 
@@ -117,23 +117,3 @@ $("#add-course").click(function () {
     div.innerHTML += (course_list[a + ""]);
     $("#checklist").append(div);
 });
-
-
-function newCalendar(sheduleList) {
-    var calendar = new tui.Calendar('#calendar', {
-        // defaultView: 'month',
-        taskView: true,
-        template: {
-            monthGridHeader: function (model) {
-                var date = new Date(model.date);
-                var template = '<span class="tui-full-calendar-weekday-grid-date">' + date.getDate() + '</span>';
-                return template;
-            }
-        }
-    });
-    calendar.setOptions({month: {visibleWeeksCount: 2}}, true);
-    calendar.changeView('month', true);
-    console.log(sheduleList)
-    calendar.createSchedules(sheduleList)
-
-}
