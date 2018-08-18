@@ -5,7 +5,20 @@ var calendar = new tui.Calendar(document.getElementById('calendar'), {
     isReadOnly: true,
     useCreationPopup: false,
     useDetailPopup: false,
-    themeConfig: {'week.vpanelSplitter.border': '4px solid #e5e5e5'} //testing, bugged :(
+    template: {
+        timegridDisplayPrimayTime: function(time) {
+            var meridiem = time.hour < 12 ? 'am' : 'pm';
+            if (time.hour <= 12) {
+                return time.hour + ':00 ' + meridiem;
+            } else {
+                twelve_hour = time.hour - 12;
+                return twelve_hour + ':00 ' + meridiem;
+            }
+        },
+        timegridDisplayTime: function(time) {
+            return time.hour + ':' + time.minutes;
+        }
+    }
 });
 
 calendar.setCalendarColor("1", { //timetable item colors
