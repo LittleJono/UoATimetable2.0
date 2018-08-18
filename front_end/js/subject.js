@@ -1,3 +1,21 @@
+window.onload = function() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var subjectJSON = JSON.parse(this.responseText);
+            for (i in subjectJSON){
+                $('#subject').append($('<option>', {
+                    value: i,
+                    text: i
+                }));
+            }
+
+        }
+    };
+    xhttp.open("GET", "https://api.auckland.ac.nz/service/courses/v2/subjects?effectiveYear=2018", true);
+    xhttp.send(null);
+}
+
 var course_list = [
     {"key": "111", "value": "An Introduction to Practical Computing"},
     {"key": "101", "value": "Principles of Programming"},
@@ -32,6 +50,39 @@ $("#subject").change(function () {
     });
 });
 
+function reqListener () {
+    console.log(this.responseText);
+}
+
+/* function getSubjects(file, callback) { //requesting
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var subjectJSON = JSON.parse(this.responseText);
+            for (i in subjectJSON){
+                $('#subject').append($('<option>', {
+                    value: JSON.stringify(i),
+                    text: JSON.stringify(i)
+                }));
+            }
+
+        }
+    };
+    xhttp.open("GET", "https://api.auckland.ac.nz/service/courses/v2/subjects?effectiveYear=2018", true);
+    xhttp.send(null);
+} */
+
+
+/* $("#subject").change(function () {
+    $.each(course_list, function (i, item) {
+        $('#course').append($('<option>', {
+            value: item.key,
+            text: item.key + " " + item.value
+        }));
+    });
+});
+ */
 
 // const axios = require('axios');
 
