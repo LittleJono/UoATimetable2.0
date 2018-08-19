@@ -168,15 +168,9 @@ $("#submit").click(function () {
 $("#add-course").click(function () {
     var courseCode = $('#course').val();
     var subjectName = $('#subject').val();
-    console.log(subjectName + courseCode)
-    console.log(courseList)
     if (courseList.length === 4) {
         alert("You cannot add courses any more")
     }
-    //TODO
-    // else if(subjectName+courseCode in courseList){
-    //     alert("This course is already added")
-    // }
     else {
         var div = document.createElement("Div");
         div.setAttribute('class', 'list-group-item');
@@ -202,11 +196,11 @@ var COLORS = [
     '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
 ];
 
-var getColor = (username) => {
+var getColor = (string) => {
     // Compute hash code
     var hash = 7;
-    for (var i = 0; i < username.length; i++) {
-        hash = username.charCodeAt(i) + (hash << 5) - hash;
+    for (var i = 0; i < string.length; i++) {
+        hash = string.charCodeAt(i) + (hash << 5) - hash;
     }
     // Calculate color
     var index = Math.abs(hash % COLORS.length);
