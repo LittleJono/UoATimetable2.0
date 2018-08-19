@@ -41,7 +41,7 @@ fs.readFile('test.json', 'utf8', (err, data) => {
 								clashLog[keys[index]] += " clashes with " + keys[index2];
 							}
 						} else {
-				`			console.log("no clash");
+							console.log("no clash");
 						}
 					}
 				}

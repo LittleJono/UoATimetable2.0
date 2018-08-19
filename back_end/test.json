@@ -1,61 +1,64 @@
-[{
-	"timetables": [{
-		"slot0": {
-			"startTime": "11:00:00",
-			"endTime": "12:00:00",
-			"DOW": "wed",
-			"location": "201N-346"
-		},
-		"slot2": {
-			"startTime": "11:00:00",
-			"endTime": "12:00:00",
-			"DOW": "thu",
-			"location": "201N-346"
-		},
-		"slot4": {
-			"startTime": "11:00:00",
-			"endTime": "12:00:00",
-			"DOW": "fri",
-			"location": "201N-346"
-		},
-		"extra": {
-			"startTime": "16:00:00",
-			"endTime": "17:00:00",
-			"DOW": "wed",
-			"location": "206-215"
-		}
-	}],
-	"classNumber": "340",
-	"classID": "46302",
-	"subject": "COMPSCI" 
-}, {
-	"timetables": [{
-		"slot0": {
-			"startTime": "11:00:00",
-			"endTime": "12:00:00",
-			"DOW": "wed",
-			"location": "201N-346"
-		},
-		"slot2": {
-			"startTime": "11:00:00",
-			"endTime": "12:00:00",
-			"DOW": "thu",
-			"location": "201N-346"
-		},
-		"slot4": {
-			"startTime": "11:00:00",
-			"endTime": "12:00:00",
-			"DOW": "fri",
-			"location": "201N-346"
-		},
-		"extra": {
-			"startTime": "16:00:00",
-			"endTime": "17:00:00",
-			"DOW": "wed",
-			"location": "206-215"
-		}
-	}],
-	"classNumber": "340",
-	"classID": "46302",
-	"subject": "COMPSCI" 
-}]
+{
+	"course1": {
+		"timetables": [{
+			"slot0": {
+				"startTime": "11:00:00",
+				"endTime": "12:00:00",
+				"DOW": "wed",
+				"location": "201N-346"
+			},
+			"slot2": {
+				"startTime": "11:00:00",
+				"endTime": "12:00:00",
+				"DOW": "thu",
+				"location": "201N-346"
+			},
+			"slot4": {
+				"startTime": "11:00:00",
+				"endTime": "12:00:00",
+				"DOW": "fri",
+				"location": "201N-346"
+			},
+			"extra": {
+				"startTime": "16:00:00",
+				"endTime": "17:00:00",
+				"DOW": "wed",
+				"location": "206-215"
+			}
+		}],
+		"classNumber": "340",
+		"classID": "46302",
+		"subject": "COMPSCI"
+	},
+	"course2": {
+		"timetables": [{
+			"slot0": {
+				"startTime": "11:00:00",
+				"endTime": "12:00:00",
+				"DOW": "wed",
+				"location": "201N-346"
+			},
+			"slot2": {
+				"startTime": "11:00:00",
+				"endTime": "12:00:00",
+				"DOW": "thu",
+				"location": "201N-346"
+			},
+			"slot4": {
+				"startTime": "11:00:00",
+				"endTime": "12:00:00",
+				"DOW": "fri",
+				"location": "201N-346"
+			},
+			"extra": {
+				"startTime": "16:00:00",
+				"endTime": "17:00:00",
+				"DOW": "wed",
+				"location": "206-215"
+			}
+		}],
+		"classNumber": "340",
+		"classID": "46302",
+		"subject": "COMPSCI"
+	}
+}
