@@ -1,4 +1,5 @@
 window.onload = function () {
+    $("#submit").prop('disabled', true)
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -15,6 +16,8 @@ window.onload = function () {
     xhttp.open("GET", "https://api.auckland.ac.nz/service/courses/v2/subjects?effectiveYear=2018", true);
     xhttp.send(null);
 }
+//TODO
+var courseList = []
 
 var course_list =
     {
@@ -117,8 +120,8 @@ $("#submit").click(function () {
                     dueDateClass: '',
                     start: '',
                     end: '',
-                    color:'#FFF',
-                    bgColor:color
+                    color: '#FFF',
+                    bgColor: color
                 }
                 object.id = i
                 object.location = items.location
@@ -139,9 +142,18 @@ $("#submit").click(function () {
 $("#add-course").click(function () {
     var div = document.createElement("Div");
     div.setAttribute('class', 'list-group-item');
-    var course = $('#course').val();
-    div.innerHTML += (course + ' ' + course_list[course]);
+    var courseCode = $('#course').val();
+    var subjectName = $('#subject').val();
+    courseList.push(subjectName+courseCode)
+    div.innerHTML += (courseCode + ' ' + course_list[courseCode]);
     $("#checklist").append(div);
+    let submitButton = $("#submit")
+    if(courseList.length === 4){
+        submitButton.text("Generate all").prop('disabled', false)
+    }
+    else {
+        submitButton.text(`Choose another ${4-courseList.length} courses`)
+    }
 });
 
 var COLORS = [
