@@ -89,71 +89,104 @@ calendar.changeView(calendar.getViewName(), true);
 
 // Make a request for a user with a given ID
 
+function readTextFile(file, callback) { //requesting file setup
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function () {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
 $("#submit").click(function () {
-    var course = $('#course').val();
+    // var course = $('#course').val();
     //TODO generate all the course
 
-    axios.get("http://35.160.249.111/classes?year=2018&subject=COMPSCI&catalogNbr=" + course)
-        .then(function (response) {
-            // handle success
-            var meetingPatterns = response.data.data[0].meetingPatterns;
-            var sheduleList = []
-            var i = 0
-            var color = getColor(course)
-            meetingPatterns.forEach(function (items) {
-                //hard code data to last week
-                var dates = {
-                    "mon": new Date(2018, 8, 13),
-                    "tue": new Date(2018, 8, 14),
-                    "wed": new Date(2018, 8, 15),
-                    "thu": new Date(2018, 8, 16),
-                    "fri": new Date(2018, 8, 17),
-                };
-                var week = dates[items.daysOfWeek];
-                //initial calender list object
+    readTextFile("http://localhost:8000/js/TEST_DATA.json", function (text) { //reading testfile hosted on the server into the calendar
+        var data = JSON.parse(text);
 
-                var object = {
-                    id: '',
-                    calendarId: '1',
-                    title: '',
-                    category: 'time',
-                    dueDateClass: '',
-                    start: '',
-                    end: '',
-                    color: '#FFF',
-                    bgColor: color
-                }
-                object.id = i
-                object.location = items.location
-                object.title = course
-                //new Date().getMonth() from 1 to 12 but when set date it accept from 0 to 11
-                object.start = new Date(week.getFullYear(), week.getMonth() - 1, week.getDate(), items.startTime.split(":")[0])
-                object.end = new Date(week.getFullYear(), week.getMonth() - 1, week.getDate(), items.endTime.split(":")[0])
-                object.category = 'time'
-                object.isReadOnly = true
-                sheduleList.push(object)
-                i++
-            })
-            calendar.createSchedules(sheduleList)
-        })
+        calendar.createSchedules(data);
+    });
+
+
+    // axios.get("http://35.160.249.111/classes?year=2018&subject=COMPSCI&catalogNbr=" + course)
+    //     .then(function (response) {
+    //         // handle success
+    //         var meetingPatterns = response.data.data[0].meetingPatterns;
+    //         var sheduleList = []
+    //         var i = 0
+    //         var color = getColor(course)
+    //         meetingPatterns.forEach(function (items) {
+    //             //hard code data to last week
+    //             var dates = {
+    //                 "mon": new Date(2018, 8, 13),
+    //                 "tue": new Date(2018, 8, 14),
+    //                 "wed": new Date(2018, 8, 15),
+    //                 "thu": new Date(2018, 8, 16),
+    //                 "fri": new Date(2018, 8, 17),
+    //             };
+    //             var week = dates[items.daysOfWeek];
+    //             //initial calender list object
+    //
+    //             var object = {
+    //                 id: '',
+    //                 calendarId: '1',
+    //                 title: '',
+    //                 category: 'time',
+    //                 dueDateClass: '',
+    //                 start: '',
+    //                 end: '',
+    //                 color: '#FFF',
+    //                 bgColor: color
+    //             }
+    //             object.id = i
+    //             object.location = items.location
+    //             object.title = course
+    //             //new Date().getMonth() from 1 to 12 but when set date it accept from 0 to 11
+    //             object.start = new Date(week.getFullYear(), week.getMonth() - 1, week.getDate(), items.startTime.split(":")[0])
+    //             object.end = new Date(week.getFullYear(), week.getMonth() - 1, week.getDate(), items.endTime.split(":")[0])
+    //             object.category = 'time'
+    //             object.isReadOnly = true
+    //             sheduleList.push(object)
+    //             i++
+    //         })
+    //         calendar.createSchedules(sheduleList)
+    //     })
 });
 
 
 $("#add-course").click(function () {
-    var div = document.createElement("Div");
-    div.setAttribute('class', 'list-group-item');
     var courseCode = $('#course').val();
     var subjectName = $('#subject').val();
-    courseList.push(subjectName+courseCode)
-    div.innerHTML += (courseCode + ' ' + course_list[courseCode]);
-    $("#checklist").append(div);
-    let submitButton = $("#submit")
-    if(courseList.length === 4){
-        submitButton.text("Generate all").prop('disabled', false)
+    console.log(subjectName + courseCode)
+    console.log(courseList)
+    if (courseList.length === 4) {
+        alert("You cannot add courses any more")
     }
+    //TODO
+    // else if(subjectName+courseCode in courseList){
+    //     alert("This course is already added")
+    // }
     else {
-        submitButton.text(`Choose another ${4-courseList.length} courses`)
+        var div = document.createElement("Div");
+        div.setAttribute('class', 'list-group-item');
+
+        courseList.push(subjectName + courseCode)
+        div.innerHTML += (courseCode + ' ' + course_list[courseCode]);
+        $("#checklist").append(div);
+        let submitButton = $("#submit")
+        if (courseList.length === 4) {
+            submitButton.text("Generate all").prop('disabled', false)
+            $('#add-course').prop('disabled', true)
+        }
+        else {
+            submitButton.text(`Choose another ${4 - courseList.length} courses`)
+        }
     }
+
 });
 
 var COLORS = [
