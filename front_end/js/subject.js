@@ -115,7 +115,9 @@ $("#submit").click(function () {
             item.borderColor = color
             scheduleList.push(item)
         });
+        calendar.clear();
         calendar.createSchedules(scheduleList);
+        calendar.render();
     });
 
 
