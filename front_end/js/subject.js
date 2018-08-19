@@ -107,8 +107,15 @@ $("#submit").click(function () {
 
     readTextFile("http://localhost:8000/js/TEST_DATA.json", function (text) { //reading testfile hosted on the server into the calendar
         var data = JSON.parse(text);
-
-        calendar.createSchedules(data);
+        var scheduleList = []
+        data.forEach(function (item) {
+            var color =  getColor(item.title)
+            item.color = "#FFF"
+            item.bgColor = color
+            item.borderColor = color
+            scheduleList.push(item)
+        });
+        calendar.createSchedules(scheduleList);
     });
 
 
