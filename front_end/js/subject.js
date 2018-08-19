@@ -43,6 +43,7 @@ var course_list =
         "380": "Undergraduate Project in Computer Science"
     };
 
+
 //load course list
 $("#subject").change(function () {
     //loop object
@@ -86,12 +87,8 @@ calendar.changeView(calendar.getViewName(), true);
 // Make a request for a user with a given ID
 
 $("#submit").click(function () {
-    var div = document.createElement("Div");
-    div.setAttribute('class', 'list-group-item');
     var course = $('#course').val();
-    div.innerHTML += (course + ' ' + course_list[course]);
-    $("#checklist").append(div);
-
+    //TODO generate all the course
 
     axios.get("http://35.160.249.111/classes?year=2018&subject=COMPSCI&catalogNbr=" + course)
         .then(function (response) {
@@ -131,7 +128,6 @@ $("#submit").click(function () {
                 object.end = new Date(week.getFullYear(), week.getMonth() - 1, week.getDate(), items.endTime.split(":")[0])
                 object.category = 'time'
                 object.isReadOnly = true
-
                 sheduleList.push(object)
                 i++
             })
@@ -140,13 +136,13 @@ $("#submit").click(function () {
 });
 
 
-// $("#add-course").click(function () {
-//     var div = document.createElement("Div");
-//     div.setAttribute('class', 'list-group-item');
-//     var a = $('#course').val();
-//     div.innerHTML += (course_list[a] + "");
-//     $("#checklist").append(div);
-// });
+$("#add-course").click(function () {
+    var div = document.createElement("Div");
+    div.setAttribute('class', 'list-group-item');
+    var course = $('#course').val();
+    div.innerHTML += (course + ' ' + course_list[course]);
+    $("#checklist").append(div);
+});
 
 var COLORS = [
     '#e21400', '#91580f', '#f8a700', '#f78b00',
